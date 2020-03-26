@@ -1,0 +1,18 @@
+{
+  "$schema": "https://hypar.io/Schemas/Function.json",
+  "description": "Look up the NYC Zoning District for a given location",
+  "id": "8e7b34f1-db85-4416-b536-4af66360b13d",
+  "language": "C#",
+  "name": "NYC Zoning Districts",
+  "repository_url": "https://github.com/hypar-io/function",
+  "model_dependencies": [
+    {
+      "name": "location",
+      "optional": false
+    }
+  ],
+  "inputs": [],
+  "outputs": [],
+  "preview_image": null,
+  "element_types": null
+}
