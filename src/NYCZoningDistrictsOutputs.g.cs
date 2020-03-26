@@ -16,12 +16,6 @@ namespace NYCZoningDistricts
 {
     public class NYCZoningDistrictsOutputs: ResultsBase
     {
-		/// <summary>
-		/// The volume.
-		/// </summary>
-		[JsonProperty("Volume")]
-		public double Volume {get;}
-
 
         
         /// <summary>
@@ -34,21 +28,5 @@ namespace NYCZoningDistricts
         }
 
 
-        /// <summary>
-        /// Construct a NYCZoningDistrictsOutputs specifying all inputs.
-        /// </summary>
-        /// <returns></returns>
-        [JsonConstructor]
-        public NYCZoningDistrictsOutputs(double volume): base()
-        {
-			this.Volume = volume;
-
-		}
-
-		public override string ToString()
-		{
-			var json = JsonConvert.SerializeObject(this);
-			return json;
-		}
 	}
 }

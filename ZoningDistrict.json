@@ -13,7 +13,7 @@
         "discriminator": {
           "type": "string"
         },      
-        "Name": {
+        "Zone Name": {
           "description": "The name of the Zone",
           "type": "string"
         },

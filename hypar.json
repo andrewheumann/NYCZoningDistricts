@@ -14,5 +14,8 @@
   "inputs": [],
   "outputs": [],
   "preview_image": null,
-  "element_types": null
+  "element_types": [
+    "https://raw.githubusercontent.com/andrewheumann/NYCZoningDistricts/master/ZoningDistrict.json",
+    "https://raw.githubusercontent.com/hypar-io/Schemas/master/Origin.json"
+  ]
 }

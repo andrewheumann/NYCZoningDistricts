@@ -16,18 +16,6 @@ namespace NYCZoningDistricts
 {
     public class NYCZoningDistrictsInputs: S3Args
     {
-		/// <summary>
-		/// The length.
-		/// </summary>
-		[JsonProperty("Length")]
-		public double Length {get;}
-
-		/// <summary>
-		/// The width.
-		/// </summary>
-		[JsonProperty("Width")]
-		public double Width {get;}
-
 
         
         /// <summary>
@@ -36,28 +24,9 @@ namespace NYCZoningDistricts
         /// </summary>
         public NYCZoningDistrictsInputs() : base()
         {
-			this.Length = 10;
-			this.Width = 10;
 
         }
 
 
-        /// <summary>
-        /// Construct a NYCZoningDistrictsInputs specifying all inputs.
-        /// </summary>
-        /// <returns></returns>
-        [JsonConstructor]
-        public NYCZoningDistrictsInputs(double length, double width, string bucketName, string uploadsBucket, Dictionary<string, string> modelInputKeys, string gltfKey, string elementsKey, string ifcKey): base(bucketName, uploadsBucket, modelInputKeys, gltfKey, elementsKey, ifcKey)
-        {
-			this.Length = length;
-			this.Width = width;
-
-		}
-
-		public override string ToString()
-		{
-			var json = JsonConvert.SerializeObject(this);
-			return json;
-		}
 	}
 }

@@ -1,10 +1,14 @@
 using Elements;
 using Elements.Geometry;
 using System.Collections.Generic;
+using System.Linq;
+using System;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace NYCZoningDistricts
 {
-      public static class NYCZoningDistricts
+    public static class NYCZoningDistricts
     {
         /// <summary>
         /// The NYCZoningDistricts function.
@@ -14,14 +18,21 @@ namespace NYCZoningDistricts
         /// <returns>A NYCZoningDistrictsOutputs instance containing computed results and the model with any new elements.</returns>
         public static NYCZoningDistrictsOutputs Execute(Dictionary<string, Model> inputModels, NYCZoningDistrictsInputs input)
         {
-            /// Your code here.
-            var height = 1.0;
-            var volume = input.Length * input.Width * height;
-            var output = new NYCZoningDistrictsOutputs(volume);
-            var rectangle = Polygon.Rectangle(input.Length, input.Width);
-            var mass = new Mass(rectangle, height);
-            output.model.AddElement(mass);
-            return output;
+            inputModels.TryGetValue("location", out Model originModel);
+            if (originModel == null)
+            {
+                throw new Exception("No location model present.");
+            }
+            var origin = originModel.AllElementsOfType<Origin>().FirstOrDefault();
+            if (origin == null)
+            {
+                throw new Exception("Unable to locate the site origin.");
+            }
+
+            var json = File.ReadAllText("../../NycZoningDistricts.json");
+            var zoningInfo = JsonConvert.DeserializeObject<ZoningInfo>(json);
+
+            return new NYCZoningDistrictsOutputs();
         }
-      }
+    }
 }
