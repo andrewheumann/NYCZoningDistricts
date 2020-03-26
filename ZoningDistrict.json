@@ -1,0 +1,26 @@
+  
+{
+    "$id": "https://hypar.io/andrewheumann/NYCZoningDistricts/ZoningDistrict.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Represents the geometry of a zoning district",
+    "title": "ZoningDistrict",
+    "x-namespace": "Elements",
+    "type": ["object", "null"],
+    "allOf": [{"$ref": "https://hypar.io/Schemas/Element.json"}],  
+    "required": ["discriminator", "Elevation", "Perimeter"],
+    "discriminator": "discriminator",
+    "properties": {
+        "discriminator": {
+          "type": "string"
+        },      
+        "Name": {
+          "description": "The name of the Zone",
+          "type": "string"
+        },
+        "Perimeter": {
+          "description": "The boundary of the zone, encoded in Lat/Long coordinates",
+          "$ref": "https://raw.githubusercontent.com/hypar-io/Elements/master/Schemas/Geometry/Polygon.json"
+        }             
+    },
+    "additionalProperties": false
+}
