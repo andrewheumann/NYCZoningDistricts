@@ -6,7 +6,7 @@
     "title": "ZoningDistrict",
     "x-namespace": "Elements",
     "type": ["object", "null"],
-    "allOf": [{"$ref": "https://hypar.io/Schemas/Element.json"}],  
+    "allOf": [{"$ref": "https://hypar.io/Schemas/GeometricElement.json"}],  
     "required": ["discriminator", "Zone Name", "Boundary"],
     "discriminator": "discriminator",
     "properties": {
@@ -18,8 +18,12 @@
           "type": "string"
         },
         "Boundary": {
-          "description": "The boundary of the zone, encoded in Lat/Long coordinates",
+          "description": "The boundary of the zone, encoded in world coordinates (relative to an origin)",
           "$ref": "https://raw.githubusercontent.com/hypar-io/Elements/master/Schemas/Geometry/Polygon.json"
+        },
+        "Origin": {
+          "description": "The global origin relative to which this boundary was calculated",
+          "$ref": "https://raw.githubusercontent.com/hypar-io/Schemas/master/Origin.json"
         }             
     },
     "additionalProperties": false

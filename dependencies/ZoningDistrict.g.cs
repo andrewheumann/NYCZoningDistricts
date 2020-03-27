@@ -26,17 +26,17 @@ namespace Elements
 	public partial class ZoningDistrict : Element
     {
         [Newtonsoft.Json.JsonConstructor]
-        public ZoningDistrict(string @name, Polygon @perimeter, System.Guid @id, string @name)
+        public ZoningDistrict(string @zone_Name, Polygon @boundary, System.Guid @id, string @name)
             : base(id, name)
         {
             var validator = Validator.Instance.GetFirstValidatorForType<ZoningDistrict>();
             if(validator != null)
             {
-                validator.PreConstruct(new object[]{ @name, @perimeter, @id, @name});
+                validator.PreConstruct(new object[]{ @zone_Name, @boundary, @id, @name});
             }
         
-            this.Name = @name;
-            this.Perimeter = @perimeter;
+            this.Zone_Name = @zone_Name;
+            this.Boundary = @boundary;
         
             if(validator != null)
             {
@@ -45,12 +45,13 @@ namespace Elements
         }
     
         /// <summary>The name of the Zone</summary>
-        [Newtonsoft.Json.JsonProperty("Name", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        [Newtonsoft.Json.JsonProperty("Zone Name", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
+        public string Zone_Name { get; set; }
     
         /// <summary>The boundary of the zone, encoded in Lat/Long coordinates</summary>
-        [Newtonsoft.Json.JsonProperty("Perimeter", Required = Newtonsoft.Json.Required.AllowNull)]
-        public Polygon Perimeter { get; set; }
+        [Newtonsoft.Json.JsonProperty("Boundary", Required = Newtonsoft.Json.Required.AllowNull)]
+        public Polygon Boundary { get; set; }
     
     
     }
