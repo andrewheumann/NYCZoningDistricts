@@ -8,18 +8,25 @@ namespace NYCZoningDistricts
 {
     public class ZoningInfo : List<ZoningDistrictRaw>
     {
-
+        internal static Dictionary<string, Color> ZoneColorCodes => new Dictionary<string, Color>
+        {
+            {"R", new Color(1, 0, 0, 0.3)},
+            {"C", new Color(0, 0, 1, 0.3)},
+            {"M", new Color(1, 0.77, 0.25, 0.3)},
+            {"P", new Color(0.3, 0.8, 0.25, 0.3)},
+        };
     }
 
     public class ZoningDistrictRaw
     {
         public string ZoningDist { get; set; }
 
-       public List<ZoningBoundary> Boundaries { get; set; }
+        public List<ZoningBoundary> Boundaries { get; set; }
 
-       public bool Contains(Vector3 coords) {
-           return false; // TODO
-       }
+        public bool Contains(Vector3 coords)
+        {
+            return false; // TODO
+        }
     }
 
     public class ZoningBoundary
@@ -50,7 +57,7 @@ namespace NYCZoningDistricts
         public Polygon GetWorldSpaceBoundary(Origin origin)
         {
             var worldOrigin = LatLonToMeters(origin.Position.Latitude, origin.Position.Longitude);
-            return new Polygon(Boundary.Vertices.Select(v => LatLonToMeters(v.Y/ 1000.0, v.X / 1000.0) - worldOrigin).ToList());
+            return new Polygon(Boundary.Vertices.Select(v => LatLonToMeters(v.Y / 1000.0, v.X / 1000.0) - worldOrigin).ToList());
         }
 
         private void GenerateBoundary()

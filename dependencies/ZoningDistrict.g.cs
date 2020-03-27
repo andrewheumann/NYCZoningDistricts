@@ -23,20 +23,22 @@ namespace Elements
     [Newtonsoft.Json.JsonConverter(typeof(Elements.Serialization.JSON.JsonInheritanceConverter), "discriminator")]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.4.0 (Newtonsoft.Json v12.0.0.0)")]
     [UserElement]
-	public partial class ZoningDistrict : Element
+	public partial class ZoningDistrict : GeometricElement
     {
         [Newtonsoft.Json.JsonConstructor]
-        public ZoningDistrict(string @zone_Name, Polygon @boundary, System.Guid @id, string @name)
-            : base(id, name)
+        public ZoningDistrict(string @zone_Name, Polygon @boundary, double @latitude, double @longitude, Transform @transform, Material @material, Representation @representation, bool @isElementDefinition, System.Guid @id, string @name)
+            : base(transform, material, representation, isElementDefinition, id, name)
         {
             var validator = Validator.Instance.GetFirstValidatorForType<ZoningDistrict>();
             if(validator != null)
             {
-                validator.PreConstruct(new object[]{ @zone_Name, @boundary, @id, @name});
+                validator.PreConstruct(new object[]{ @zone_Name, @boundary, @latitude, @longitude, @transform, @material, @representation, @isElementDefinition, @id, @name});
             }
         
             this.Zone_Name = @zone_Name;
             this.Boundary = @boundary;
+            this.Latitude = @latitude;
+            this.Longitude = @longitude;
         
             if(validator != null)
             {
@@ -49,9 +51,17 @@ namespace Elements
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         public string Zone_Name { get; set; }
     
-        /// <summary>The boundary of the zone, encoded in Lat/Long coordinates</summary>
+        /// <summary>The boundary of the zone, encoded in world coordinates (relative to an origin)</summary>
         [Newtonsoft.Json.JsonProperty("Boundary", Required = Newtonsoft.Json.Required.AllowNull)]
         public Polygon Boundary { get; set; }
+    
+        /// <summary>Latitude of the origin</summary>
+        [Newtonsoft.Json.JsonProperty("Latitude", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double Latitude { get; set; }
+    
+        /// <summary>Longitude of the origin</summary>
+        [Newtonsoft.Json.JsonProperty("Longitude", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double Longitude { get; set; }
     
     
     }

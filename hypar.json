@@ -11,8 +11,23 @@
       "optional": false
     }
   ],
-  "inputs": [],
-  "outputs": [],
+  "inputs": [
+    {
+      "min": 1.0,
+      "max": 1000.0,
+      "step": 1.0,
+      "name": "This does nothing",
+      "description": "Don't touch it.",
+      "type": "range"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "This isn't anything",
+      "description": "Don't look at it.",
+      "type": "number"
+    }
+  ],
   "preview_image": null,
   "element_types": [
     "https://raw.githubusercontent.com/andrewheumann/NYCZoningDistricts/master/ZoningDistrict.json",
