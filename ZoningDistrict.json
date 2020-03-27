@@ -1,30 +1,44 @@
-  
-{
+  {
     "$id": "https://hypar.io/andrewheumann/NYCZoningDistricts/ZoningDistrict.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Represents the geometry of a zoning district",
     "title": "ZoningDistrict",
     "x-namespace": "Elements",
-    "type": ["object", "null"],
-    "allOf": [{"$ref": "https://hypar.io/Schemas/GeometricElement.json"}],  
-    "required": ["discriminator", "Zone Name", "Boundary"],
+    "type": [
+      "object",
+      "null"
+    ],
+    "allOf": [
+      {
+        "$ref": "https://hypar.io/Schemas/GeometricElement.json"
+      }
+    ],
+    "required": [
+      "discriminator",
+      "Zone Name",
+      "Boundary"
+    ],
     "discriminator": "discriminator",
     "properties": {
-        "discriminator": {
-          "type": "string"
-        },      
-        "Zone Name": {
-          "description": "The name of the Zone",
-          "type": "string"
-        },
-        "Boundary": {
-          "description": "The boundary of the zone, encoded in world coordinates (relative to an origin)",
-          "$ref": "https://raw.githubusercontent.com/hypar-io/Elements/master/Schemas/Geometry/Polygon.json"
-        },
-        "Origin": {
-          "description": "The global origin relative to which this boundary was calculated",
-          "$ref": "https://raw.githubusercontent.com/hypar-io/Schemas/master/Origin.json"
-        }             
+      "discriminator": {
+        "type": "string"
+      },
+      "Zone Name": {
+        "description": "The name of the Zone",
+        "type": "string"
+      },
+      "Boundary": {
+        "description": "The boundary of the zone, encoded in world coordinates (relative to an origin)",
+        "$ref": "https://raw.githubusercontent.com/hypar-io/Elements/master/Schemas/Geometry/Polygon.json"
+      },
+      "Latitude": {
+        "description": "Latitude of the origin",
+          "type": "number"
+      },
+      "Longitude": {
+        "description": "Longitude of the origin",
+        "type": "number"
+      }
     },
     "additionalProperties": false
-}
+  }
